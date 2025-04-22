@@ -1,11 +1,12 @@
 #This script will find latest  backups in a directory and delete all other backups files before a specified rpo
-$RPO= 9
+$RPO= 8
 $backupFolder= Read-Host("Please specify the backup folder")
 if (!(Test-Path -Path $backupFolder)){
     Write-Output "Folder does not exist quiting .............."
     exit
 }
-$backupFiles = get-childItem -path $backupFolder -include('*.vbk','*vib', '*vbm') -File -Recurse
+$backupFolder= "C:\Backup PC DESKTOP-4AOQCQD\Job DESKTOP-4AOQCQD"
+#$backupFiles = get-childItem -path $backupFolder -include('*.vbk','*vib', '*vbm') -File -Recurse
 if($backupFiles){
     Write-Output("BackUp files found in $backupFolder")
     $backupFiles | ForEach-object {
@@ -78,4 +79,3 @@ else {
             Write-Output "---------------------------------------------"
         }
     } <# and #>
-
