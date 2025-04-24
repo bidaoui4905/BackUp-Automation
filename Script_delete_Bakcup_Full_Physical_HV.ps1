@@ -2,9 +2,9 @@
 $RPO= 16
 
 #Uncomment the line below to set a fixed path & comment the line after
-$backupFolder= "C:\path\to\backup\folder"
+#$backupFolder= "C:\path\to\backup\folder"
 #or
-#$backupFolder= Read-Host("Please specify the backup folder")
+$backupFolder= Read-Host("Please specify the backup folder")
 if (!(Test-Path -Path $backupFolder)){
     Write-Output "Folder does not exist quiting .............."
     exit
