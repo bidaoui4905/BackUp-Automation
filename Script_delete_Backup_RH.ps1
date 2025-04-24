@@ -2,7 +2,7 @@
 $RPO= 8
 
 #Uncomment the line below to set a fixed path & comment the line after
-$backupFolder= "V:\Backup PC PDT_WIN_004\Job PDT_WIN_004_1"
+$backupFolder= "C: \path\to\backup\folder"
 #or
 #$backupFolder= Read-Host("Please specify the backup folder")
 if (!(Test-Path -Path $backupFolder)){

@@ -2,7 +2,7 @@
 $RPO= 16
 
 #Uncomment the line below to set a fixed path & comment the line after
-$backupFolder= "A:\Backup HV-C\Backup Job 2 for OS C on HYPER-V\192.168.1.61"
+$backupFolder= "C: \path\to\backup\folder"
 #or
 #$backupFolder= Read-Host("Please specify the backup folder")
 if (!(Test-Path -Path $backupFolder)){

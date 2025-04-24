@@ -16,7 +16,9 @@ This project aims to automate backup jobs using PowerShell scripts. The provided
 The Backup Automation project is designed for IT administrators who need to automate routine backup tasks. With these PowerShell scripts, you can:
 - Search for backup files in specified directories (and subdirectories).
 - Display file details such as full path, creation time, and last modification time.
+- Permit alignement with your specific backup plan needs.
 - Retain the latest backups while deleting older ones.
+- Highly customizable through the RPO & PATHS parameters.
 - Optionally copy backup files to a designated destination.
 - Easily integrate these scripts into scheduled tasks or CI/CD pipelines.
 
@@ -29,13 +31,13 @@ The Backup Automation project is designed for IT administrators who need to auto
   Outputs file details including full path, creation date, and last modified date.
 
 - **Selective Retention and Cleanup:**  
-  Identifies the latest N backup files and deletes older files to free up disk space.
+  Identifies the latest backup files and specify RPO to deletes older files to free up disk space.
 
 - **Manual Copy Option:**  
   Prompts the user to copy files to a specified destination.
 
 - **Customizable Parameters:**  
-  Easily configure source/destination directories, file filters, rpo and retention criteria.
+  Easily configure source/destination directories, file filters, RPO and retention criteria.
 
 ## Installation
 
