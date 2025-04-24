@@ -1,16 +1,20 @@
 #This script will find latest  backups in a directory and delete all other backups files before a specified rpo
 $RPO= 9
+
+#Uncomment the line below to set a fixed path & comment the line after
+#$backupFolder= path/to/backup/folder
+#or
 $backupFolder= Read-Host("Please specify the backup folder")
 if (!(Test-Path -Path $backupFolder)){
     Write-Output "Folder does not exist quiting .............."
     exit
 }
-$backupFiles = get-childItem -path $backupFolder -include('*.vbk','*vib', '*vbm') -File -Recurse
+$backupFiles = get-childItem -path $backupFolder -include('*.vbk','*.vib', '*.vbm') -File -Recurse
 if($backupFiles){
     Write-Output("BackUp files found in $backupFolder")
     $backupFiles | ForEach-object {
         Write-Output " Path : $($_.Fullname) `n Created : $($_.CreationTime) `n Last Modified : $($_.LastWriteTime)"
-        #add condition toc output file type
+        #add condition to output file type
         if (($_.Extension) -eq ".vbk"){
             Write-Output "File Type : Full backup file"
         }
@@ -22,12 +26,16 @@ if($backupFiles){
         }
         Write-Output "---------------------------------------------"
     }
-    $filestoDelete = $backupFiles | Where-Object {$_.LastWriteTime -lt (Get-Date).adddays(-$RPO)}
+    $filestoDelete = $backupFiles | Where-Object {$_.LastWriteTime -lt $RPO}
+   # $filestoDelete = $backupFiles | Where-Object {$_.LastWriteTime -lt (Get-Date).adddays(-$RPO)}
     if($filestoDelete){
         $delete = Read-Host "Delete all backups before $rpo days ? (Yes/No)"
         if($delete -eq "yes"){
-            Write-Output "=======================WARNING:========================"
-            Write-Output "****The following backup files will be deleted ********"
+            Write-Output "======================================================="
+            Write-Output "                      WARNING:                        "
+            Write-Output "======================================================="
+            Write-Output "      The following backup files will be deleted      "
+            Write-Output "======================================================="
             $filestoDelete | ForEach-Object {
             Write-Output " Path : $($_.Fullname) `n Created : $($_.CreationTime) `n Last Modified : $($_.LastWriteTime)"
             }
@@ -48,7 +56,10 @@ if($backupFiles){
             exit
         }
     }
-    else{Write-Output "No files to delete, quitting..................."}
+    else{
+        Write-Output "No files to delete, quitting..................."
+        exit
+    }
 }
 else {
     Write-Output "No backup files found in $backupfolder"
