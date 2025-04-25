@@ -1,7 +1,7 @@
 #This script will find latest  backups in a directory and delete all other backups files before a specified rpo
 $RPO= 8
 #$backupFolder= Read-Host("Please specify the backup folder")
-$backupFolder= "C:\Backup PC DESKTOP-4AOQCQD\Job DESKTOP-4AOQCQD"
+$backupFolder= "C:\path\to\backup\folder"
 if (!(Test-Path -Path $backupFolder)){
     Write-Output "Folder does not exist quiting .............."
     exit
