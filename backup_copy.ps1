@@ -24,7 +24,9 @@ if ($backupFiles){
 else {
     Write-Output "No Veeam BackUp files found in : '$backupFolder' : "
 }
-
+#By default This Script Will Set Up RTO as the last 7 Days 
+#Uncomment the line below to set it Dynamically
+#$RTO = Read-Host "What's your Recovery Time Objective ?"
 $sevenDaysAgo = (get-date).Date.adddays(-7)
 Write-Output "Seven Days ago $sevenDaysAgo"
 Write-Output "Checking for latest backup ............................"
